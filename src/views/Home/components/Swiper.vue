@@ -16,7 +16,7 @@ export default {
     return {
       swiperOptions: {
         pagination: ".swiper-pagination",
-				loop: true
+        loop: true,
       },
       swiperList: [
         {
@@ -45,7 +45,6 @@ export default {
 	overflow: hidden
 	padding-bottom: 31.25%
 	background: #eee
-
 	.swiper-img
 		width: 100%
 </style>
