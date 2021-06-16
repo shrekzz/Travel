@@ -1,10 +1,15 @@
 <template>
-  <div>hello world!!!sssass?</div>
-
+  <div><home-header /></div>
 </template>
 
 <script>
-export default {};
+import HomeHeader from "./components/Header.vue";
+export default {
+  naem: "Home",
+  components: {
+    HomeHeader,
+  },
+};
 </script>
 
 <style></style>
