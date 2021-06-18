@@ -2,11 +2,7 @@
   <div>
     <div class="title">周末去哪儿</div>
     <ul>
-      <li
-        class="item border-bottom"
-        v-for="item of list"
-        :key="item.id"
-      >
+      <li class="item border-bottom" v-for="item of list" :key="item.id">
         <div class="item-img-wrapper">
           <img class="item-img" :src="item.imgUrl" />
         </div>
@@ -22,13 +18,13 @@
 <script>
 export default {
   name: "HomeWeekend",
-  props:{
-    list: Array
+  props: {
+    list: Array,
   },
   data() {
     return {
       swiperOptions: {
-        autoplay: false
+        autoplay: false,
       },
     };
   },

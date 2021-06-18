@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import HomeHeader from "./components/Header.vue";
-import HomeSwiper from "./components/Swiper.vue";
-import HomeIcons from "./components/Icons.vue";
-import HomeRecommend from "./components/Recommend.vue";
-import HomeWeekend from "./components/Weekend.vue";
+import HomeHeader from "@/components/Home/Header";
+import HomeSwiper from "@/components/Home/Swiper";
+import HomeIcons from "@/components/Home/Icons";
+import HomeRecommend from "@/components/Home/Recommend";
+import HomeWeekend from "@/components/Home/Weekend";
 import axios from "axios";
 
 export default {
@@ -31,7 +31,7 @@ export default {
       swiperList: [],
       iconList: [],
       recommendList: [],
-      weekendList: []
+      weekendList: [],
     };
   },
   methods: {
@@ -46,7 +46,7 @@ export default {
         this.swiperList = res.data.swiperList;
         this.iconList = res.data.iconList;
         this.recommendList = res.data.recommendList;
-        this.weekendList = res.data.weekendList
+        this.weekendList = res.data.weekendList;
       }
     },
   },
