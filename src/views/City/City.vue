@@ -2,8 +2,8 @@
   <div>
     <city-header />
     <city-search />
-    <city-list v-if="cities.length!==0" :cities="cities" :hot="hotCities" />
-    <city-alphabet />
+    <city-list v-if="cities.length !== 0" :cities="cities" :hot="hotCities" />
+    <city-alphabet :cities="cities" />
   </div>
 </template>
 

@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import Bscroll from "better-scroll";
+import BSscroll from "better-scroll";
 
 export default {
   name: "CityList",
@@ -42,50 +42,103 @@ export default {
     cities: Object,
     hot: Array,
   },
-  mounted() {
-    console.log(this.cities);
-    this.scroll = new Bscroll(this.$refs.wrapper);
+  methods: {
+    __initScroll() {
+      this.$nextTick(() => {
+        if (!this.BSscroll) {
+          this.BSscroll = new BSscroll(this.$refs.wrapper, {
+            click: true,
+            probeType: 1,
+          });
+        } else {
+          this.BSscroll.refresh();
+        }
+      });
+    },
+
+    // 获取兄弟组件的字母数据
+    handleLetterChange(letter) {
+      if (letter) {
+        // 获取每个城市列表的节点,letter是变量
+        // const cityNode = this.$refs[letter]
+        const cityNode = this.$refs[letter][0];
+        // console.log(cityNode)
+        this.BSscroll.scrollToElement(cityNode);
+      }
+    },
+  },
+
+  watch: {
+    // 监视数据，最后一次刷新
+    hotCities() {
+      this.__initScroll();
+    },
+
+    cities() {
+      this.__initScroll();
+    },
   },
 };
 </script>
 
 <style lang="stylus" scoped>
-@import '~styles/varibles.styl'
-.border-topbottom
-  &:before
-    border-color: #ccc
-  &:after
-    border-color: #ccc
-.border-bottom
-  &:before
-    border-color: #ccc
-.list
-  overflow: hidden
-  position: absolute
-  top: 1.58rem
-  left: 0
-  right: 0
-  bottom: 0
-  .title
-    line-height: 0.54rem
-    background: #eee
-    padding-left: 0.2rem
-    color: #666
-    font-size: 0.26rem
-  .button-list
-    overflow: hidden
-    padding: 0.1rem 0.6rem 0.1rem 0.1rem
-    .button-wrapper
-      float: left
-      width: 33.33%
-      .button
-        margin: 0.1rem
-        padding: 0.1rem 0
-        text-align: center
-        border: 0.02rem solid #ccc
-        border-radius: 0.06rem
-  .item-list
-    .item
-      line-height: 0.76rem
-      padding-left: 0.2rem
+@import '~styles/varibles.styl';
+
+.border-topbottom {
+  &:before {
+    border-color: #ccc;
+  }
+
+  &:after {
+    border-color: #ccc;
+  }
+}
+
+.border-bottom {
+  &:before {
+    border-color: #ccc;
+  }
+}
+
+.list {
+  overflow: hidden;
+  position: absolute;
+  top: 1.58rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .title {
+    line-height: 0.54rem;
+    background: #eee;
+    padding-left: 0.2rem;
+    color: #666;
+    font-size: 0.26rem;
+  }
+
+  .button-list {
+    overflow: hidden;
+    padding: 0.1rem 0.6rem 0.1rem 0.1rem;
+
+    .button-wrapper {
+      float: left;
+      width: 33.33%;
+
+      .button {
+        margin: 0.1rem;
+        padding: 0.1rem 0;
+        text-align: center;
+        border: 0.02rem solid #ccc;
+        border-radius: 0.06rem;
+      }
+    }
+  }
+
+  .item-list {
+    .item {
+      line-height: 0.76rem;
+      padding-left: 0.2rem;
+    }
+  }
+}
 </style>
