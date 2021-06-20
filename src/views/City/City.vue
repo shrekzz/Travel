@@ -1,7 +1,7 @@
 <template>
   <div>
     <city-header />
-    <city-search />
+    <city-search :cities="cities" />
     <city-list
       v-if="cities.length !== 0"
       :cities="cities"
