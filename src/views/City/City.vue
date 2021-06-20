@@ -2,8 +2,13 @@
   <div>
     <city-header />
     <city-search />
-    <city-list v-if="cities.length !== 0" :cities="cities" :hot="hotCities" />
-    <city-alphabet :cities="cities" />
+    <city-list
+      v-if="cities.length !== 0"
+      :cities="cities"
+      :hot="hotCities"
+      :letter="letter"
+    />
+    <city-alphabet :cities="cities" @change="handleLetterChange" />
   </div>
 </template>
 
@@ -26,6 +31,7 @@ export default {
     return {
       cities: {},
       hotCities: [],
+      letter: "",
     };
   },
   methods: {
@@ -38,6 +44,9 @@ export default {
         this.cities = res.data.cities;
         this.hotCities = res.data.hotCities;
       }
+    },
+    handleLetterChange(letter) {
+      this.letter = letter;
     },
   },
   mounted() {
