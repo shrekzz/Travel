@@ -14,6 +14,7 @@
           class="search-item border-bottom"
           v-for="(item, index) of list"
           :key="index"
+          @click="handleCityClick(item.name)"
         >
           {{ item.name }}
         </li>
@@ -47,6 +48,10 @@ export default {
           this.SearchScroll.refresh();
         }
       });
+    },
+    handleCityClick(city) {
+      this.$store.commit("changeCity", city);
+      this.$router.push("/");
     },
   },
   watch: {
