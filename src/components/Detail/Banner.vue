@@ -13,7 +13,11 @@
         </div>
       </div>
     </div>
-    <common-gallary :imgs="imgs" v-show="showGallary" @close="handleGallaryClose" />
+    <common-gallary
+      :imgs="imgs"
+      v-show="showGallary"
+      @close="handleGallaryClose"
+    />
   </div>
 </template>
 
