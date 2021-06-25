@@ -52,7 +52,7 @@ export default {
     },
     ...mapMutations(["changeCity"]),
     handleCityClick(city) {
-      this.changeCity(city)
+      this.changeCity(city);
       this.$router.push("/");
     },
   },
